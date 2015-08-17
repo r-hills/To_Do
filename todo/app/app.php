@@ -52,6 +52,13 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->post("/results", function() use ($app) {
+        // $category = new Category($_POST['find']);
+        // $category->save();
+        return $app['twig']->render('results.html.twig', array('categories' => Category::getMatches($_POST['find'])));
+    });
+
+
     return $app;
 
 
